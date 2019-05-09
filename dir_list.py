@@ -1,7 +1,9 @@
+# Global module imports
 import os
 import json
 
-
+# Function to iterate over files in a given path
+# Determines if file, directory, or a child directory, and size of tile, in bytes
 def path_listing(path):
     p = {'name': (path)}
     if os.path.isdir(path):
@@ -12,5 +14,7 @@ def path_listing(path):
         p['size'] = str(os.path.getsize(path)) + ' B'
     return p
 
+# Receives input from the user to determine which path to anaylze
 direc = input("Enter path: ")
+# Outputs results of fuction in "pretty" JSON format
 print (json.dumps(path_listing(direc),indent=2))
